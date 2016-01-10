@@ -1,0 +1,15 @@
+{
+"apps" : [
+    {
+     "name"        : "mongod",
+     "script"      : "/usr/bin/mongod",
+     "args"        : ["--config", "/etc/mongod.conf"],
+     "merge_logs"  : true
+    },
+    {
+     "name": "meteor",
+     "script": "main.js",
+     "cwd": "/output/bundle"
+    }
+]
+}

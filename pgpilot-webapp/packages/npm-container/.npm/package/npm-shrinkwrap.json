@@ -1,0 +1,53 @@
+{
+  "dependencies": {
+    "tunnel-ssh": {
+      "version": "0.0.5",
+      "dependencies": {
+        "ssh2": {
+          "version": "0.2.25",
+          "dependencies": {
+            "streamsearch": {
+              "version": "0.1.2"
+            },
+            "asn1": {
+              "version": "0.1.11"
+            }
+          }
+        }
+      }
+    },
+    "ws": {
+      "version": "0.7.1",
+      "dependencies": {
+        "options": {
+          "version": "0.0.6"
+        },
+        "ultron": {
+          "version": "1.0.1"
+        },
+        "bufferutil": {
+          "version": "1.0.1",
+          "dependencies": {
+            "bindings": {
+              "version": "1.2.1"
+            },
+            "nan": {
+              "version": "1.6.2"
+            }
+          }
+        },
+        "utf-8-validate": {
+          "version": "1.0.1",
+          "dependencies": {
+            "bindings": {
+              "version": "1.2.1"
+            },
+            "nan": {
+              "version": "1.6.2"
+            }
+          }
+        }
+      }
+    }
+  }
+}

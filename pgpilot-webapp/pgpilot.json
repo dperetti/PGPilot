@@ -1,0 +1,1 @@
+{"projectName":"Testing...","nodes":[{"name":"Master","ip":"192.168.99.100","hostname":"","password":"mypassword","server_cert":"","postgres_port":"6000","toolbox_port":"8888","check_server":false},{"name":"Slave","ip":"192.168.99.100","hostname":null,"password":"mypassword","server_cert":null,"postgres_port":"6001","toolbox_port":"8889","check_server":false}]}

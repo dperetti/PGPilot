@@ -1,0 +1,21 @@
+'master': #67JgD#
+    container_name: pgnode_master
+    build: .
+    ports:
+        - "6000:5432"
+        - "8888:8888"
+    environment:
+        - pass=mypassword
+    volumes:
+        - ./www:/www
+
+'slave1':
+    container_name: pgnode_slave1
+    build: .
+    ports:
+        - "6001:5432"
+        - "8889:8888"
+    environment:
+        - pass=mypassword
+    volumes:
+        - ./www:/www

@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "phantomJs": false,
+    "imageMagick": false
+  },
+  "preBuildCommands": [],
+  "postBuildCommands": ["npm install --silent -g pm2"],
+  "buildOptions": {
+    "mobileServerUrl": false,
+    "additionalFlags": false
+  }
+}

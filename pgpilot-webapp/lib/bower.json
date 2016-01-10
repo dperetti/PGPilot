@@ -1,0 +1,11 @@
+{
+  "name": "pgpilot",
+  "version": "0.0.1",
+  "dependencies": {
+    "react-bootstrap": "0.20.3"
+  },
+  "ignoredDependencies": [
+    "react"
+  ],
+  "private": true
+}

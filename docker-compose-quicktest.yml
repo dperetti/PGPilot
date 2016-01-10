@@ -1,0 +1,25 @@
+'master':
+    container_name: pgnode_master
+    image: dperetti/pgpilot:node-0.4.3
+    ports:
+        - "6000:5432"
+        - "8888:8888"
+    environment:
+        - pass=mypassword
+
+'slave1':
+    container_name: pgnode_slave1
+    image: dperetti/pgpilot:node-0.4.3
+    ports:
+        - "6001:5432"
+        - "8889:8888"
+    environment:
+        - pass=mypassword
+
+'webapp':
+    container_name: pgpilot_front
+    image: dperetti/pgpilot:webapp
+    ports:
+        - "8080:80"
+    volumes:
+        - .:/config
