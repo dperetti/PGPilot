@@ -4,7 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 autopublish
 insecure
 joncursi:socket-io-client
@@ -18,7 +17,6 @@ twbs:bootstrap
 meteorhacks:npm
 
 
-npm-container
 jparker:crypto-md5
 momentjs:moment
 reactive-var
@@ -27,3 +25,20 @@ reactjs:react
 
 # Bower in order to install react-bootstrap
 mquandalle:bower
+
+
+npm-container
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
