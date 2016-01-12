@@ -1,25 +1,25 @@
 Meteor.startup(function () { // #NRSMr#
 
-    // We don't need data persitence, except for the configuration which we store in a json file called pgpilot.json.
+    // We don't need data persitence, except for the configuration which we store in a yaml file called pgpilot.yaml.
     // Meteor's MongoDB is only used to deal with session data so it's ok to clean up everything on startup.
 
     Nodes.remove({});
     Logs.remove({});
 
-    // Try to load a configuration.json file from disk
+    // Try to load a pgpilot.yaml configuration file from disk
     var fs = Meteor.npmRequire('fs');
     var Path = Meteor.npmRequire('path')
 
-    // During development, we'll use the pgpilot.json that's in the current directory.
+    // During development, we'll use the pgpilot.yaml that's in the current directory.
     // When run in Docker, it's set to /config by the Dockerfile.
   	var configuration_dir = process.env.CONFIGURATION_DIR || process.env.PWD
 
     var path
 
-    var path = Path.join(configuration_dir, 'pgpilot.json')
+    var path = Path.join(configuration_dir, 'pgpilot.yaml')
 
     try {
-        var data = JSON.parse(fs.readFileSync(path));
+        var data = YAML.safeLoad(fs.readFileSync(path), 'utf8');
         // Instantiate the nodes from what we found in the configuration file
         Comm.createNodesFromConfig(data.nodes);
         // Set the name of the project
@@ -52,7 +52,7 @@ Meteor.startup(function () { // #NRSMr#
                 var fs = Meteor.npmRequire('fs');
 
                 var nodes = _.map(Nodes.find({}).fetch(), function(r) {return _.pick(r, 'name', 'ip', 'hostname', 'password',
-                'server_cert', 'postgres_port', 'toolbox_port', 'check_server')});
+                'server_cert', 'postgres_port', 'websocket_port', 'check_server_cert')});
 
 
                 var data = {
@@ -60,7 +60,9 @@ Meteor.startup(function () { // #NRSMr#
                     nodes: nodes
                 };
 
-                fs.writeFile(path, JSON.stringify(data));
+                var yml = YAML.safeDump(data);
+                fs.writeFile(path, yml);
+
             },
 
             /**

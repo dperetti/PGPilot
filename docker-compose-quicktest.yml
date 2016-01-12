@@ -1,5 +1,5 @@
-'master':
-    container_name: pgnode_master
+'pgnode_A': #fyzyS#
+    container_name: pgnode_A
     image: dperetti/pgpilot:node-0.4.3
     ports:
         - "6000:5432"
@@ -7,8 +7,8 @@
     environment:
         - pass=mypassword
 
-'slave1':
-    container_name: pgnode_slave1
+'pgnode_B':
+    container_name: pgnode_B
     image: dperetti/pgpilot:node-0.4.3
     ports:
         - "6001:5432"

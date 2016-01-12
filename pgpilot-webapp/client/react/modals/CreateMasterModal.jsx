@@ -1,7 +1,7 @@
 Input = ReactBootstrap.Input;
 Modal = ReactBootstrap.Modal;
 
-CreateMasterModal = ReactMeteor.createClass({
+CreateMasterModal = React.createClass({ // #EfALP#
 
     mixins: [React.addons.LinkedStateMixin],
 
@@ -40,6 +40,7 @@ CreateMasterModal = ReactMeteor.createClass({
                    bsStyle='primary'
                    backdrop={true}
                    animation={true}
+                   show={true}
                    onRequestHide={this.props.handleHide}>
 
                 <div className='modal-body'>

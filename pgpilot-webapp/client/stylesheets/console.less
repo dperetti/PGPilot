@@ -3,45 +3,58 @@ body {
   background-color: #FCFCFC;
 }
 
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
-}
-
-
 .modal-dialog {
   .certificate {
     font-size: 8px;
   }
 }
 
-#footer {
-  left: 0;
-  right: 0;
+#wrap {
+    position: absolute;
+    top: 0;
+    bottom: 300px;
+    left: 0;
+    right: 0;
+    overflow: scroll;
+    .container {
+        margin-top: 40px;
+    }
+    text-align: center;
 }
 
-div#console {
-  position: relative;
-  pre#terminal {
+#console {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  #terminal {
+    height: 300px;
+    left:0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
     text-align: left;
     background-color: black;
     color: lightgray;
-    line-height: 8px;
+    //line-height: 11px;
     font-size: 11px;
     margin-bottom: 0;
 
-    span.command {
+    .command {
       font-size: 11px;
       font-weight: normal;
       color: antiquewhite;
     }
-    span.label-success {
+    .label-success {
       background-color: darkgreen;
     }
-    span.error {
+    .error {
       color: #d20709
     }
-    span.server-command {
+    .server-command {
       color: saddlebrown;
       background-color: #343434;
     }

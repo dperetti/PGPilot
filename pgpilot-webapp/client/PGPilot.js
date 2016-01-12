@@ -102,8 +102,8 @@ PGPilot = function() {
         if (node_id == undefined) {
             Nodes.createNode(settings.name, settings.ip,
                 settings.hostname, settings.password,
-                settings.check_server, settings.server_cert,
-                settings.toolbox_port,settings.postgres_port);
+                settings.check_server_cert, settings.server_cert,
+                settings.websocket_port,settings.postgres_port);
         } else
         if (Nodes.findOne({address: settings.ip})) {
 
@@ -117,8 +117,8 @@ PGPilot = function() {
                 hostname: settings.hostname,
                 password: settings.password,
                 server_cert: settings.server_cert,
-                check_server: settings.check_server,
-                toolbox_port: settings.toolbox_port,
+                check_server_cert: settings.check_server_cert,
+                websocket_port: settings.websocket_port,
                 postgres_port: settings.postgres_port
             }
         });

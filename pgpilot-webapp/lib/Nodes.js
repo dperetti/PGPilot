@@ -1,5 +1,5 @@
 /**
- * Nodes collection. Represent pgtoolbox server nodes.
+ * Nodes collection. Represent pgwebsocket server nodes.
  * @type {Mongo.Collection}
  */
 Nodes = new Meteor.Collection('nodes');
@@ -9,21 +9,21 @@ Nodes = new Meteor.Collection('nodes');
  * @param {string} ip
  * @param {string} hostname
  * @param {string} password
- * @param {bool} check_server
+ * @param {bool} check_server_cert
  * @param {string} server_cert
- * @param {number} toolbox_port
+ * @param {number} websocket_port
  * @param {number} postgres_port
  * @returns {any}
  */
-Nodes.createNode = function(name, ip, hostname, password, check_server, server_cert, toolbox_port, postgres_port) { // #KHERt#
+Nodes.createNode = function(name, ip, hostname, password, check_server_cert, server_cert, websocket_port, postgres_port) { // #KHERt#
     return Nodes.insert({
         name: name,
         ip: ip,
         hostname: hostname,
         password: password,
-        check_server: check_server,
+        check_server_cert: check_server_cert,
         server_cert: server_cert,
-        toolbox_port: toolbox_port,
+        websocket_port: websocket_port,
         postgres_port: postgres_port
     });
 };
@@ -64,7 +64,7 @@ if ( Meteor.isServer ) {
 
     Nodes.before.update(function (userId, node, fieldNames, modifier, options) {
         try {
-            if (fieldNames.indexOf('ip') != -1 || fieldNames.indexOf('toolbox_port') != -1) {
+            if (fieldNames.indexOf('ip') != -1 || fieldNames.indexOf('websocket_port') != -1) {
                 Comm.closeSocket(node)
             }
 
@@ -75,7 +75,7 @@ if ( Meteor.isServer ) {
 
     Nodes.after.update(function (userId, node, fieldNames, modifier, options) {
         try {
-            if (fieldNames.indexOf('ip') != -1 || fieldNames.indexOf('toolbox_port') != -1) {
+            if (fieldNames.indexOf('ip') != -1 || fieldNames.indexOf('websocket_port') != -1) {
 
                 Comm.createSocket(node)
             }

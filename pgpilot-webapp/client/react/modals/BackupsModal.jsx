@@ -2,7 +2,7 @@ Modal = ReactBootstrap.Modal;
 Table = ReactBootstrap.Table;
 Glyphicon = ReactBootstrap.Glyphicon;
 
-BackupsModal = ReactMeteor.createClass({
+BackupsModal = React.createClass({
 
     mixins: [React.addons.LinkedStateMixin],
 
@@ -68,6 +68,7 @@ BackupsModal = ReactMeteor.createClass({
                 bsStyle='primary'
                 backdrop={true}
                 animation={true}
+                show={true}
                 onRequestHide={this.props.handleHide}>
 
                 <div className='modal-body'>
@@ -78,7 +79,7 @@ BackupsModal = ReactMeteor.createClass({
                         </tbody>
                     </Table>
 
-                </div   >
+                </div>
                 <div className='modal-footer'>
                     <Button onClick={this.props.handleHide}>Close</Button>
                     <Button bsStyle='danger' disabled={this.state.selectedItem == undefined} onClick={this.handleDeleteBackup}>Delete Backup</Button>

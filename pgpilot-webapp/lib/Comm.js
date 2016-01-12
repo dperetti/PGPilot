@@ -23,8 +23,8 @@ Comm = function () {
         _.each(data, function(d) {
             Nodes.createNode(d.name, d.ip,
                 d.hostname, d.password,
-                d.check_server == null ? false : d.check_server, d.server_cert,
-                d.toolbox_port, d.postgres_port);
+                d.check_server_cert == null ? false : d.check_server_cert, d.server_cert,
+                d.websocket_port, d.postgres_port);
         }, this);
     }
 
@@ -56,12 +56,12 @@ Comm = function () {
     }
 
     var closeSocket = function (node) {
-        delete connections[node.ip + ':' + node.toolbox_port]
+        delete connections[node.ip + ':' + node.websocket_port]
         Nodes.update(node._id, {$set: {connected: false}})
     }
 
     var _node_address = function (node) {
-        return (node.ip ? node.ip : node.hostname ) + ':' + node.toolbox_port
+        return (node.ip ? node.ip : node.hostname ) + ':' + node.websocket_port
     }
 
     /**
@@ -82,7 +82,7 @@ Comm = function () {
         //var fs = Meteor.npmRequire('fs')
 
         var ws = new Websocket('wss://' + address + '/pgnode', { // #EnkC4#
-            rejectUnauthorized: node.check_server,
+            rejectUnauthorized: node.check_server_cert,
             ca: [node.server_cert],
             //cert: fs.readFileSync(process.env.PWD + '/client.crt'),
             //key: fs.readFileSync(process.env.PWD + '/client.key'),

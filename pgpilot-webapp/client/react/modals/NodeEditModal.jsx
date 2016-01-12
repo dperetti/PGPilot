@@ -4,7 +4,7 @@ Grid = ReactBootstrap.Grid;
 Row = ReactBootstrap.Row;
 Col = ReactBootstrap.Col;
 
-NodeEditModal = ReactMeteor.createClass({
+NodeEditModal = React.createClass({
 
     mixins: [React.addons.LinkedStateMixin],
 
@@ -16,12 +16,12 @@ NodeEditModal = ReactMeteor.createClass({
                 mode: "new",
                 name: "",
                 ip: "",
-                toolbox_port: 8888,
+                websocket_port: 8888,
                 postgres_port: 5432,
-                check_server: false
+                check_server_cert: false
             };
         } else {
-            var state = _.pick(this.props.model, 'name', 'ip', 'toolbox_port', 'postgres_port', 'password', 'check_server', 'server_cert');
+            var state = _.pick(this.props.model, 'name', 'ip', 'websocket_port', 'postgres_port', 'password', 'check_server_cert', 'server_cert');
             state.mode = "edit";
             return state;
         }
@@ -42,6 +42,7 @@ NodeEditModal = ReactMeteor.createClass({
                 bsStyle='primary'
                 backdrop={true}
                 animation={true}
+                show={true}
                 onRequestHide={this.props.handleHide}>
 
                 <div className='modal-body'>
@@ -49,27 +50,27 @@ NodeEditModal = ReactMeteor.createClass({
                         <Row>
                             <Col md={6}>
                                 <Input valueLink={this.linkState('name')} type="text" label="Name" placeholder="Development"
-                                    help="Description of the node."/>
+                                    help="Description of the node"/>
                             </Col>
                             <Col md={6}>
-                                <Input valueLink={this.linkState('ip')} type="text" label="IP Address" placeholder="Ex: 192.168.0.1"
-                                    help="IP Address of the node. Required if the hostname isn't accessible from the network."/>
+                                <Input valueLink={this.linkState('ip')} type="text" label="HOST or IP" placeholder="Ex: 192.168.0.1"
+                                    help="HOST or IP Address of the node"/>
                             </Col>
                         </Row>
                         <Row>
                             <Col md={6}>
-                                <Input valueLink={this.linkState('toolbox_port')} type="text" label="Websocket port of the node" placeholder="ex: 8888"
-                                       help="Websocket port of the toolbox"/>
+                                <Input valueLink={this.linkState('websocket_port')} type="text" label="Websocket port of the node" placeholder="ex: 8888"
+                                       help="The external port you set when you launched the docker container"/>
                             </Col>
                             <Col md={6}>
-                                <Input valueLink={this.linkState('postgres_port')} type="text" label="PostgeSQL port" placeholder="ex: 5432"
+                                <Input valueLink={this.linkState('postgres_port')} type="text" label="PostgreSQL port" placeholder="ex: 5432"
                                     help="The external port you set when you launched the docker container"/>
                             </Col>
                         </Row>
                         <Input valueLink={this.linkState('password')} type="textarea" label="PGPilot Password" placeholder="ex: TheSuperPAsSwOrD"
-                            help="Postgres Pilot Password set when you launched the docker container"/>
-                        <Input checkedLink={this.linkState('check_server')} type="checkbox" label="Check server certificate" />
-                        <Input valueLink={this.linkState('server_cert')} type="textarea" label="Certificate" placeholder="-----BEGIN CERTIFICATE-----..."/>
+                            help="PG Pilot password you set when you launched the docker container"/>
+                        <Input checkedLink={this.linkState('check_server_cert')} type="checkbox" label="Check server certificate" />
+                        <Input valueLink={this.linkState('server_cert')} type="textarea" label="Certificate" placeholder="-----BEGIN CERTIFICATE-----..." help="(server.pem)"/>
                     </Grid>
                 </div   >
                 <div className='modal-footer'>
