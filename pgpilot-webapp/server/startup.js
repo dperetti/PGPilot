@@ -1,25 +1,25 @@
 Meteor.startup(function () { // #NRSMr#
 
-    // We don't need data persitence, except for the configuration which we store in a json file called pgpilot.json.
+    // We don't need data persitence, except for the configuration which we store in a yaml file called pgpilot.yaml.
     // Meteor's MongoDB is only used to deal with session data so it's ok to clean up everything on startup.
 
     Nodes.remove({});
     Logs.remove({});
 
-    // Try to load a configuration.json file from disk
+    // Try to load a pgpilot.yaml configuration file from disk
     var fs = Meteor.npmRequire('fs');
     var Path = Meteor.npmRequire('path')
 
-    // During development, we'll use the pgpilot.json that's in the current directory.
+    // During development, we'll use the pgpilot.yaml that's in the current directory.
     // When run in Docker, it's set to /config by the Dockerfile.
   	var configuration_dir = process.env.CONFIGURATION_DIR || process.env.PWD
 
     var path
 
-    var path = Path.join(configuration_dir, 'pgpilot.json')
+    var path = Path.join(configuration_dir, 'pgpilot.yaml')
 
     try {
-        var data = JSON.parse(fs.readFileSync(path));
+        var data = YAML.safeLoad(fs.readFileSync(path), 'utf8');
         // Instantiate the nodes from what we found in the configuration file
         Comm.createNodesFromConfig(data.nodes);
         // Set the name of the project
@@ -51,8 +51,8 @@ Meteor.startup(function () { // #NRSMr#
             saveConfiguration: function() {
                 var fs = Meteor.npmRequire('fs');
 
-                var nodes = _.map(Nodes.find({}).fetch(), function(r) {return _.pick(r, 'name', 'ip', 'hostname', 'password',
-                'server_cert', 'postgres_port', 'toolbox_port', 'check_server')});
+                var nodes = _.map(Nodes.find({}).fetch(), function(r) {return _.pick(r, 'name', 'host', 'password',
+                'server_cert', 'postgres_port', 'websocket_port', 'check_server_cert')});
 
 
                 var data = {
@@ -60,7 +60,9 @@ Meteor.startup(function () { // #NRSMr#
                     nodes: nodes
                 };
 
-                fs.writeFile(path, JSON.stringify(data));
+                var yml = YAML.safeDump(data);
+                fs.writeFile(path, yml);
+
             },
 
             /**
@@ -241,7 +243,7 @@ Meteor.startup(function () { // #NRSMr#
 
                 // Generate a slot name based on the slave ip and port.
                 // (the replication slot will be created on the master)
-                var replication_slot_name = (slave_node.ip + "__" + slave_node.postgres_port).replace(/(\.)/g, '_');
+                var replication_slot_name = (slave_node.host + "__" + slave_node.postgres_port).replace(/(\.)/g, '_');
 
                 // The role used for this replication is by default based on the slot name.
                 var replication_user = "repl_" + replication_slot_name;  // TODO: rename to replication_role
@@ -273,7 +275,7 @@ Meteor.startup(function () { // #NRSMr#
                     Controller.sendCommand(master_node, ["create_replication_slot", replication_slot_name, use_existing_replication_role ? '-1' : replication_user, use_existing_replication_role ? '-1' : replication_password], function () {
 
                         // init db on slave #SjMEb#
-                        var cmd_init_slave = ["init_slave", master_node.ip, master_node.postgres_port, replication_slot_name, replication_user, replication_password];
+                        var cmd_init_slave = ["init_slave", master_node.host, master_node.postgres_port, replication_slot_name, replication_user, replication_password];
 
                         Controller.sendCommand(slave_node, cmd_init_slave, function () {
                             Controller.sendCommand(slave_node, "status");

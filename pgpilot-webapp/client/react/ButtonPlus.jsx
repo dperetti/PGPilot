@@ -1,5 +1,5 @@
 
-ButtonPlus = ReactMeteor.createClass({
+ButtonPlus = React.createClass({
 
     templateName: "ButtonPlus",
 

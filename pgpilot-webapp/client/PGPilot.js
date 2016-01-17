@@ -31,7 +31,7 @@ PGPilot = function() {
 
         var master_node = Nodes.findOne(master_node_id);
 
-        if (confirm("Are you sure you want to make this server a slave of " + master_node.ip + " (" + master_node.postgres_port + ") ?")) {
+        if (confirm("Are you sure you want to make this server a slave of " + master_node.host + " (" + master_node.postgres_port + ") ?")) {
             Meteor.call('action_create_slave', node_id, master_node_id)
         }
     };
@@ -100,12 +100,12 @@ PGPilot = function() {
      */
     var updateOrCreateSettings = function(node_id, settings) { // #TJ24Q#
         if (node_id == undefined) {
-            Nodes.createNode(settings.name, settings.ip,
-                settings.hostname, settings.password,
-                settings.check_server, settings.server_cert,
-                settings.toolbox_port,settings.postgres_port);
+            Nodes.createNode(settings.name, settings.host,
+                settings.password,
+                settings.check_server_cert, settings.server_cert,
+                settings.websocket_port,settings.postgres_port);
         } else
-        if (Nodes.findOne({address: settings.ip})) {
+        if (Nodes.findOne({address: settings.host})) {
 
             alert('Already exists');
             return false;
@@ -113,12 +113,11 @@ PGPilot = function() {
         } else Nodes.update(node_id, {
             $set: {
                 name: settings.name,
-                ip: settings.ip,
-                hostname: settings.hostname,
+                host: settings.host,
                 password: settings.password,
                 server_cert: settings.server_cert,
-                check_server: settings.check_server,
-                toolbox_port: settings.toolbox_port,
+                check_server_cert: settings.check_server_cert,
+                websocket_port: settings.websocket_port,
                 postgres_port: settings.postgres_port
             }
         });

@@ -1,5 +1,5 @@
 
-EditableSpan = ReactMeteor.createClass( {
+EditableSpan = React.createClass( {
     displayName: 'EditableSpan',
 
     getInitialState: function() {
