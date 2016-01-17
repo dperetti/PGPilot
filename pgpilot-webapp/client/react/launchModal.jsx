@@ -8,7 +8,7 @@ launchModal = function(modal, otherProps) { // #aWzaF#
 
     var mountNode = document.getElementById("modal-placeholder");
 
-    var ModalWrapper = ReactMeteor.createClass({
+    var ModalWrapper = React.createClass({
 
         getInitialState() {
             var props = _.extend({}, otherProps, {
@@ -41,5 +41,5 @@ launchModal = function(modal, otherProps) { // #aWzaF#
         }
     });
 
-    React.render(<ModalWrapper modal={modal}  />, mountNode);
+    ReactDOM.render(<ModalWrapper modal={modal}  />, mountNode);
 };

@@ -1,14 +1,17 @@
 Navbar = ReactBootstrap.Navbar;
+Brand = ReactBootstrap.NavbarBrand
 Nav = ReactBootstrap.Nav;
 NavItem = ReactBootstrap.NavItem;
 ButtonToolbar = ReactBootstrap.ButtonToolbar;
 Button = ReactBootstrap.Button;
 
-MainNavBar = ReactMeteor.createClass({
+MainNavBar = React.createClass({
+
+    mixins: [ReactMeteorData],
 
     templateName: "MainNavBar",
 
-    getMeteorState() {
+    getMeteorData() {
 
         return {
             projectName: Project.get('name')
@@ -33,10 +36,6 @@ MainNavBar = ReactMeteor.createClass({
         PGPilot.uiEditSettings();
     },
 
-    handleToggleConsole() {
-        $('.collapse').collapse('toggle');
-    },
-
     handleSaveConfiguration() {
         PGPilot.uiSaveConfiguration();
     },
@@ -51,14 +50,16 @@ MainNavBar = ReactMeteor.createClass({
         };
 
 
-        var brand = <span><img src="/Logo.png" /><span className="title">PG Pilot – <i><EditableSpan text={this.state.projectName} handleBlur={handleBlur} /></i></span></span>;
 
-        return <Navbar brand={brand} inverse fixedTop fluid >
 
-            <Nav navbar right>
+        return <Navbar inverse fixedTop fluid >
+            <Brand>
+                <img src="/Logo.png" /><span className="title"><i><EditableSpan text={this.data.projectName} handleBlur={handleBlur} /></i></span>
+            </Brand>
+
+            <Nav navbar pullRight>
                 <ButtonToolbar>
                     <Button onClick={this.handleRefresh} className="navbar-btn" bsStyle='primary'>Refresh</Button>
-                    <Button onClick={this.handleToggleConsole} className="navbar-btn" bsStyle='primary'>Toggle Console</Button>
                     <Button onClick={this.handleNewNode} className="navbar-btn" bsStyle='primary'>New Node</Button>{/* #FWNuw# */}
                     <Button onClick={this.handleSaveConfiguration} className="navbar-btn" bsStyle='primary'>Save Configuration</Button>
                     <span>&nbsp;</span>
