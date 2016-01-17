@@ -50,7 +50,7 @@ PGNodeRepresentation = class PGNodeRepresentation extends React.Component {
         const header = <div>
             <div>{model.name}</div>
             <span className="address">
-                <span className="ip">{model.ip}</span>
+                <span className="host">{model.host}</span>
                 :
                 <span className="postgres-port">{model.postgres_port}</span>
                 &nbsp;
@@ -89,7 +89,7 @@ PGNodeRepresentation = class PGNodeRepresentation extends React.Component {
                 if (primary) {
 
                     slave_section = <tr>
-                        <td colSpan="2">SLAVE &#8592; {primary.ip} ({primary.postgres_port})</td>
+                        <td colSpan="2">SLAVE &#8592; {primary.host} ({primary.postgres_port})</td>
                     </tr>
                 }
             } else {
@@ -152,7 +152,7 @@ PGNodeRepresentation = class PGNodeRepresentation extends React.Component {
                                 var disabled = r.state != 'SERVER_IS_RUNNING' ? 'disabled' : ''
                                 return (
                                     <MenuItem eventKey={r._id} key={r._id}
-                                              className={disabled}>{r.ip} {r.postgres_port} {r.state != 'SERVER_IS_RUNNING' ? 'Not started' : ''}</MenuItem>
+                                              className={disabled}>{r.host} {r.postgres_port} {r.state != 'SERVER_IS_RUNNING' ? 'Not started' : ''}</MenuItem>
                                 )
                             })}
                         </DropdownButton>

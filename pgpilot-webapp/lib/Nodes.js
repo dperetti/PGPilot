@@ -6,8 +6,7 @@ Nodes = new Meteor.Collection('nodes');
 
 /**
  * Create a node in the database
- * @param {string} ip
- * @param {string} hostname
+ * @param {string} host
  * @param {string} password
  * @param {bool} check_server_cert
  * @param {string} server_cert
@@ -15,11 +14,10 @@ Nodes = new Meteor.Collection('nodes');
  * @param {number} postgres_port
  * @returns {any}
  */
-Nodes.createNode = function(name, ip, hostname, password, check_server_cert, server_cert, websocket_port, postgres_port) { // #KHERt#
+Nodes.createNode = function(name, host, password, check_server_cert, server_cert, websocket_port, postgres_port) { // #KHERt#
     return Nodes.insert({
         name: name,
-        ip: ip,
-        hostname: hostname,
+        host: host,
         password: password,
         check_server_cert: check_server_cert,
         server_cert: server_cert,
@@ -64,7 +62,7 @@ if ( Meteor.isServer ) {
 
     Nodes.before.update(function (userId, node, fieldNames, modifier, options) {
         try {
-            if (fieldNames.indexOf('ip') != -1 || fieldNames.indexOf('websocket_port') != -1) {
+            if (fieldNames.indexOf('host') != -1 || fieldNames.indexOf('websocket_port') != -1) {
                 Comm.closeSocket(node)
             }
 
@@ -75,7 +73,7 @@ if ( Meteor.isServer ) {
 
     Nodes.after.update(function (userId, node, fieldNames, modifier, options) {
         try {
-            if (fieldNames.indexOf('ip') != -1 || fieldNames.indexOf('websocket_port') != -1) {
+            if (fieldNames.indexOf('host') != -1 || fieldNames.indexOf('websocket_port') != -1) {
 
                 Comm.createSocket(node)
             }

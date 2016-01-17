@@ -21,8 +21,7 @@ Comm = function () {
      */
     var createNodesFromConfig = function(data) { // #odvgv#
         _.each(data, function(d) {
-            Nodes.createNode(d.name, d.ip,
-                d.hostname, d.password,
+            Nodes.createNode(d.name, d.host, d.password,
                 d.check_server_cert == null ? false : d.check_server_cert, d.server_cert,
                 d.websocket_port, d.postgres_port);
         }, this);
@@ -56,12 +55,12 @@ Comm = function () {
     }
 
     var closeSocket = function (node) {
-        delete connections[node.ip + ':' + node.websocket_port]
+        delete connections[node.host + ':' + node.websocket_port]
         Nodes.update(node._id, {$set: {connected: false}})
     }
 
     var _node_address = function (node) {
-        return (node.ip ? node.ip : node.hostname ) + ':' + node.websocket_port
+        return node.host + ':' + node.websocket_port
     }
 
     /**

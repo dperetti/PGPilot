@@ -15,20 +15,20 @@ NodeEditModal = React.createClass({
             return {
                 mode: "new",
                 name: "",
-                ip: "",
+                host: "",
                 websocket_port: 8888,
                 postgres_port: 5432,
                 check_server_cert: false
             };
         } else {
-            var state = _.pick(this.props.model, 'name', 'ip', 'websocket_port', 'postgres_port', 'password', 'check_server_cert', 'server_cert');
+            var state = _.pick(this.props.model, 'name', 'host', 'websocket_port', 'postgres_port', 'password', 'check_server_cert', 'server_cert');
             state.mode = "edit";
             return state;
         }
     },
 
     handleSave: function() {  // #TuC43#
-        if ( this.state.ip == undefined || this.state.ip.length == 0 ) {
+        if ( this.state.host == undefined || this.state.host.length == 0 ) {
             alert('IP must be set');
         } else {
             this.props.handleHide();
@@ -53,7 +53,7 @@ NodeEditModal = React.createClass({
                                     help="Description of the node"/>
                             </Col>
                             <Col md={6}>
-                                <Input valueLink={this.linkState('ip')} type="text" label="HOST or IP" placeholder="Ex: 192.168.0.1"
+                                <Input valueLink={this.linkState('host')} type="text" label="HOST or IP" placeholder="Ex: 192.168.0.1"
                                     help="HOST or IP Address of the node"/>
                             </Col>
                         </Row>

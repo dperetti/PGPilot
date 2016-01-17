@@ -51,7 +51,7 @@ Meteor.startup(function () { // #NRSMr#
             saveConfiguration: function() {
                 var fs = Meteor.npmRequire('fs');
 
-                var nodes = _.map(Nodes.find({}).fetch(), function(r) {return _.pick(r, 'name', 'ip', 'hostname', 'password',
+                var nodes = _.map(Nodes.find({}).fetch(), function(r) {return _.pick(r, 'name', 'host', 'password',
                 'server_cert', 'postgres_port', 'websocket_port', 'check_server_cert')});
 
 
@@ -243,7 +243,7 @@ Meteor.startup(function () { // #NRSMr#
 
                 // Generate a slot name based on the slave ip and port.
                 // (the replication slot will be created on the master)
-                var replication_slot_name = (slave_node.ip + "__" + slave_node.postgres_port).replace(/(\.)/g, '_');
+                var replication_slot_name = (slave_node.host + "__" + slave_node.postgres_port).replace(/(\.)/g, '_');
 
                 // The role used for this replication is by default based on the slot name.
                 var replication_user = "repl_" + replication_slot_name;  // TODO: rename to replication_role
@@ -275,7 +275,7 @@ Meteor.startup(function () { // #NRSMr#
                     Controller.sendCommand(master_node, ["create_replication_slot", replication_slot_name, use_existing_replication_role ? '-1' : replication_user, use_existing_replication_role ? '-1' : replication_password], function () {
 
                         // init db on slave #SjMEb#
-                        var cmd_init_slave = ["init_slave", master_node.ip, master_node.postgres_port, replication_slot_name, replication_user, replication_password];
+                        var cmd_init_slave = ["init_slave", master_node.host, master_node.postgres_port, replication_slot_name, replication_user, replication_password];
 
                         Controller.sendCommand(slave_node, cmd_init_slave, function () {
                             Controller.sendCommand(slave_node, "status");

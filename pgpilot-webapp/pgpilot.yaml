@@ -1,16 +1,14 @@
 projectName: Testing...  #BKt3q#
 nodes:
-  - name: Slave
-    ip: 192.168.99.100
-    hostname: null
+  - name: Server A
+    host: 192.168.99.100
     password: mypassword
     server_cert: null
     postgres_port: "6001"
     websocket_port: "8889"
     check_server_cert: false
-  - name: Master
-    ip: 192.168.99.100
-    hostname: null
+  - name: Server B
+    host: 192.168.99.100
     password: mypassword
     server_cert: null
     postgres_port: "6000"
