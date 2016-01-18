@@ -89,7 +89,6 @@ class RunCommand(Command):
         out_databases = []
         if out:
             databases = out['results']
-            print databases
             for database in databases:
                 database_name = database[0]
                 tables = self.sql_all("""SELECT
@@ -100,7 +99,6 @@ class RunCommand(Command):
                                   nspname NOT IN ('pg_catalog', 'information_schema') AND relkind='r'
                                 ORDER BY reltuples DESC;""", analyze="tables", database=database_name)
                 out_databases.append(dict(name=database_name, tables=tables['results']))
-            print out_databases
             self.write_analyse('databases='+json.dumps(out_databases))
 
         try:
@@ -261,7 +259,6 @@ class RunCommand(Command):
 
         if hint == 'free_space':
             if out_all:
-                print out_all
                 r = "free_space=" + re.split('\s+', out_all[-1])[4]
 
         if hint == 'status':

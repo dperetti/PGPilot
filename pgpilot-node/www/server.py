@@ -49,7 +49,7 @@ class MainHandler(websocket.WebSocketHandler): #t5bmc#
         if len(sp) == 2:
             tag = sp[0]
             command = sp[1]
-			
+
             # Run the command
             c = RunCommand(handler=self, tag=tag, command=command)
             c.run()
@@ -61,7 +61,6 @@ class MainHandler(websocket.WebSocketHandler): #t5bmc#
         print "WebSocket closed"
 
     def check_origin(self, origin):
-        print origin
         return True
 
     def _hashed_challenge(self, challenge):
@@ -71,18 +70,23 @@ class MainHandler(websocket.WebSocketHandler): #t5bmc#
         return md5.hexdigest()
 
 
-class DummyHandler(object):
-    def write_message(self, message):
-        if message[:6] == 'init|<':
-            c = RunCommand(handler=self, tag='start', command="start")
-            c.run()
-
+# This handler is commented out but is kept here as an example of how to
+# run a command without using any front end. (useful in development)
+# class DummyHandler(object):
+#     def write_message(self, message):
+#         if message[:6] == 'init|<':
+#             c = RunCommand(handler=self, tag='start', command="start")
+#             c.run()
+# Here we're starting the server after having initialized it.
+# See also below.
 
 if __name__ == "__main__": #rp5lk#
 
+    # See DummyHandler above.
     # Create a primary postgres database on startup (in dev only)
     # c = RunCommand(handler=DummyHandler(), tag='init', command="init_primary -1")
     # c.run()
+
 
     # Set up Tornado logging
     gen_log.setLevel(DEBUG)
