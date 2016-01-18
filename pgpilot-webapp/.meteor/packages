@@ -27,7 +27,6 @@ react
 mquandalle:bower
 
 
-npm-container
 standard-minifiers
 meteor-base
 mobile-experience
@@ -44,3 +43,6 @@ spacebars
 check
 maxharris9:classnames
 udondan:yml
+
+
+npm-container

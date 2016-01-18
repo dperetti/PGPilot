@@ -1,6 +1,6 @@
 'pgnode_A': #fyzyS#
     container_name: pgnode_A
-    image: dperetti/pgpilot:node-0.4.3
+    image: dperetti/pgpilot:node-latest
     ports:
         - "6000:5432"
         - "8888:8888"
@@ -9,7 +9,7 @@
 
 'pgnode_B':
     container_name: pgnode_B
-    image: dperetti/pgpilot:node-0.4.3
+    image: dperetti/pgpilot:node-latest
     ports:
         - "6001:5432"
         - "8889:8888"
@@ -18,7 +18,7 @@
 
 'webapp':
     container_name: pgpilot_front
-    image: dperetti/pgpilot:webapp
+    image: dperetti/pgpilot:webapp-latest
     ports:
         - "8080:80"
     volumes:

@@ -38,7 +38,6 @@ class Command(object):
         try:
             commands = list([command]) + list(next_commands)
             for command in commands:
-                print command
                 out_all = list()
                 err_all = list()
                 analyse_hint = None
@@ -64,13 +63,11 @@ class Command(object):
                     for fd in ret[0]:
                         if fd == p.stdout.fileno():
                             out = p.stdout.readline().rstrip()
-                            print out
                             if len(out) > 0:
                                 out_all.append(out)
                                 self.write_stdout(out)
                         elif fd == p.stderr.fileno():
                             err = p.stderr.readline().rstrip()
-                            print err
                             if len(err) > 0:
                                 err_all.append(err)
                                 self.write_stderr(err)
