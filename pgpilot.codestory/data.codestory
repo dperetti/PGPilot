@@ -13,7 +13,7 @@
         "yaml",
         "yml"
     ],
-    "focusedItemRef": "6dc009b0-9537-11e5-9120-63a988a278ba",
+    "focusedItemRef": "fdad0ab0-9f59-11e5-be17-f7e2c080c49c",
     "images": [
         {
             "ref": "7eaaa8a0-984f-11e5-a837-077a82bd7a4f",
@@ -3107,7 +3107,7 @@
             "title": "1.2 update"
         }
     ],
-    "path": "/Users/dom/Dropbox/dev/pgpilot/PGPilot.codestory",
+    "path": "/Users/dom/Dropbox/dev/pgpilot/pgpilot.codestory",
     "roots": [
         {
             "accessible": true,
