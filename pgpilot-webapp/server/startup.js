@@ -1,5 +1,7 @@
+import Project from '../lib/Project'
+import fs from 'fs'
+import Path from 'path'
 Meteor.startup(function () { // #NRSMr#
-
     // We don't need data persitence, except for the configuration which we store in a yaml file called pgpilot.yaml.
     // Meteor's MongoDB is only used to deal with session data so it's ok to clean up everything on startup.
 
@@ -7,8 +9,8 @@ Meteor.startup(function () { // #NRSMr#
     Logs.remove({});
 
     // Try to load a pgpilot.yaml configuration file from disk
-    var fs = Meteor.npmRequire('fs');
-    var Path = Meteor.npmRequire('path')
+    // var fs = Meteor.npmRequire('fs');
+    // var Path = Meteor.npmRequire('path')
 
     // During development, we'll use the pgpilot.yaml that's in the current directory.
     // When run in Docker, it's set to /config by the Dockerfile.
@@ -49,7 +51,7 @@ Meteor.startup(function () { // #NRSMr#
              * Save configuration to disk
              */
             saveConfiguration: function() {
-                var fs = Meteor.npmRequire('fs');
+                // var fs = Meteor.npmRequire('fs');
 
                 var nodes = _.map(Nodes.find({}).fetch(), function(r) {return _.pick(r, 'name', 'host', 'password',
                 'server_cert', 'postgres_port', 'websocket_port', 'check_server_cert')});

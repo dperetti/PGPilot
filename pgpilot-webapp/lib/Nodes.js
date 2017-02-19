@@ -45,7 +45,6 @@ if ( Meteor.isServer ) {
     Nodes.after.insert(function (userId, node) { // #gSksW#
         try {
             Comm.createSocket(node)
-
         } catch (e) {
             console.log(e)
         }

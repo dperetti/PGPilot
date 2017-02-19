@@ -79,7 +79,6 @@ class Command(object):
             print e
 
     def sql_all(self, query, analyze=None, database=None): #CWlWp#
-
         # write sql query
         self.write_stdout(query, is_command=True)
 
@@ -104,7 +103,6 @@ class Command(object):
         return result
 
     def sql(self, query, raise_on_exception=False): #AtbNK#
-
         # write sql query
         self.write_stdout(query, is_command=True)
 

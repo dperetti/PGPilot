@@ -1,16 +1,19 @@
 /**
  * @module Comm
  */
+import ws from 'ws'
+
+let WebSocket
 
 Comm = function () {
 
     var connections = {}
-    var Websocket = null
+    // var Websocket = null
     //var Tunnel = null
     var init = function () {
 
         if (Meteor.isServer) {
-            Websocket = Meteor.npmRequire('ws');
+            Websocket = ws
             //Tunnel = Meteor.npmRequire('tunnel-ssh');
         }
     }

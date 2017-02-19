@@ -18,7 +18,7 @@ Console = React.createClass({
 
         return <div id="console" className="collapse">
             <button id="clear" className="btn btn-default btn-xs" type="submit">Clear</button>
-            <pre id="terminal" style={{height: 400}}>
+            <pre id="terminal">
                 { this.data.commands.map ( (c) => {
                     return <div key={c._id}>
                         <span className="command label label-default">{c.nodeLabel}</span>

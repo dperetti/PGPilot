@@ -27,6 +27,5 @@ EXPOSE 8888
 
 #R5zeP#
 CMD python server.py
-
 #haQCF#
 ENTRYPOINT ["/entrypoint.sh"]

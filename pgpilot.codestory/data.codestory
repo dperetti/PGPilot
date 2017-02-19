@@ -1,8 +1,9 @@
 {
     "allowCodeEditingWhenReadOnly": true,
-    "editable": false,
+    "editable": true,
     "fileExtensions": [
         "Dockerfile",
+        "conf",
         "html",
         "js",
         "jsx",
@@ -13,7 +14,7 @@
         "yaml",
         "yml"
     ],
-    "focusedItemRef": "fdad0ab0-9f59-11e5-be17-f7e2c080c49c",
+    "focusedItemRef": "b8975650-c084-11e5-9a01-c56f8dcd0835",
     "images": [
         {
             "ref": "7eaaa8a0-984f-11e5-a837-077a82bd7a4f",
@@ -176,13 +177,13 @@
         {
             "items": [
                 {
-                    "content": "<p>This note describes how a pg<span style=\"font-size: 15.4px; line-height: 1.42857;\">node is initialized as a primary postgreSQL database.</span></p>",
+                    "content": "<p>This note describes how a pg<span style=\"font-size: 15.4px; line-height: 1.42857;\">node is initialized as a primary P</span><span style=\"font-size: 15.4px;\">ostgreSQL database.</span></p>",
                     "ref": "615c2240-a03f-11e5-9996-475bbcae1431",
                     "settings": {},
                     "type": "text"
                 },
                 {
-                    "content": "User clicks the Create Master button",
+                    "content": "The user clicks the Create Master button",
                     "ref": "eb39a470-9f58-11e5-be17-f7e2c080c49c",
                     "settings": {
                         "imageAlign": "center"
@@ -198,6 +199,7 @@
                             {
                                 "ref": "e91ae320-9f58-11e5-be17-f7e2c080c49c",
                                 "settings": {
+                                    "hasCaption": false,
                                     "imageRef": "e92fa3a0-9f58-11e5-be17-f7e2c080c49c"
                                 }
                             }
@@ -211,7 +213,8 @@
                     "ref": "fdad0ab0-9f59-11e5-be17-f7e2c080c49c",
                     "settings": {
                         "linesAfter": 3,
-                        "linesBefore": 0,
+                        "linesBefore": 1,
+                        "showIndicator": true,
                         "token": "ulcSu"
                     },
                     "type": "code"
@@ -231,7 +234,7 @@
                     "ref": "11174980-9f5a-11e5-be17-f7e2c080c49c",
                     "settings": {
                         "linesAfter": 4,
-                        "linesBefore": 4,
+                        "linesBefore": 2,
                         "token": "dUh5t"
                     },
                     "type": "code"
@@ -335,12 +338,12 @@
                     "type": "step"
                 },
                 {
-                    "content": "Link to...",
-                    "ref": "e5d39f30-9f8b-11e5-b9dc-3759b64e4f46",
+                    "content": "<p>As a result, a primary postgres database is set up.</p>",
+                    "ref": "543d2620-ebf4-11e6-a9c2-0d50068f5333",
                     "settings": {
                         "noteRef": "c30344b0-9f8b-11e5-b9dc-3759b64e4f46"
                     },
-                    "type": "reference"
+                    "type": "text"
                 },
                 {
                     "content": "The front end UI reflects that the master is created",
@@ -403,7 +406,7 @@
                     "type": "imageGroup"
                 },
                 {
-                    "content": "<p><b>PGPilot</b> lets you <span style=\"line-height: 1.42857;\">control postgreSQL server instances, set up multi-node replications using a graphic user interface.</span></p><p><br><b>PGPilot</b> is <u>twofold</u> :</p><p></p><ul><li><span style=\"line-height: 1.42857;\"><b>PGPilot node</b>, which is a <b>postgresql server</b> + <b>a python websocket server</b>, both \"<a href=\"https://www.docker.com/what-docker\">dockerized</a>\" in a single container.</span><br></li><li><span style=\"line-height: 1.42857;\"><b>A front-end</b>, which is a Meteor <b>web application</b> designed to run and be accessed locally.</span></li></ul><span style=\"line-height: 1.42857;\">Using the web app, the user is able to control and orchestrate remote postgresql servers and configure replication, backups, etc.</span><br><p></p>",
+                    "content": "<p><b>PGPilot</b> lets you <span style=\"line-height: 1.42857;\">control postgreSQL server instances, set up multi-node replications using a graphic user interface.</span></p><p><br><b>PGPilot</b> is <u>twofold</u> :</p><p></p><ul><li><span style=\"line-height: 1.42857;\"><b>PGPilot node</b>, which is a <b>postgresql server</b> + <b>a python websocket server</b>, both \"<a href=\"https://www.docker.com/what-docker\">dockerized</a>\" in a single container.</span><br></li><li><span style=\"line-height: 1.42857;\"><b>A front-end</b>, which is currently a Meteor <b>web application</b> designed to run and be accessed locally.</span></li></ul><span style=\"line-height: 1.42857;\">Using the web app, the user is able to control and orchestrate remote postgresql servers and configure replication, backups, etc.</span><br><p></p>",
                     "ref": "f5022cd0-8634-11e5-aebe-df0f8426c901",
                     "settings": {},
                     "type": "text"
@@ -450,6 +453,12 @@
         {
             "items": [
                 {
+                    "content": "<p>Meteor is required for development.</p>",
+                    "ref": "6af58fc0-f6cf-11e6-93b2-5585f6f4982a",
+                    "settings": {},
+                    "type": "text"
+                },
+                {
                     "content": [
                         {
                             "inserts": [
@@ -467,10 +476,12 @@
                     "type": "shell"
                 },
                 {
-                    "content": "<p>Start meteor :</p>",
-                    "ref": "20ac6b30-7b0d-11e5-b2ba-670f641a2552",
-                    "settings": {},
-                    "type": "text"
+                    "content": "Start meteor to launch the app",
+                    "ref": "91c8d4e0-f6cf-11e6-93b2-5585f6f4982a",
+                    "settings": {
+                        "imageAlign": "center"
+                    },
+                    "type": "step"
                 },
                 {
                     "content": [
@@ -504,6 +515,14 @@
                     "type": "shell"
                 },
                 {
+                    "content": "Open the browser",
+                    "ref": "951f52e0-f6cf-11e6-93b2-5585f6f4982a",
+                    "settings": {
+                        "imageAlign": "center"
+                    },
+                    "type": "step"
+                },
+                {
                     "content": "<p>Open the browser at&nbsp;<a href=\"http://localhost:3000/\">http://localhost:3000/</a>.</p>",
                     "ref": "ea1cf020-bd70-11e5-9191-c3501916d748",
                     "settings": {},
@@ -511,7 +530,9 @@
                 }
             ],
             "ref": "7cb7ea40-7b0c-11e5-b2ba-670f641a2552",
-            "settings": {},
+            "settings": {
+                "firstParagraphIsDescription": true
+            },
             "title": "PGPilot Front End"
         },
         {
@@ -613,7 +634,7 @@
                     "type": "text"
                 },
                 {
-                    "content": "<p>Both nodes should now be running.</p><p>Hitting <code class=\"code\">ctrl-C</code> will stop the containers.</p>",
+                    "content": "<p>Both nodes should now be running.</p><p>Hit&nbsp;<code class=\"code\">ctrl-C</code>&nbsp;to stop the containers.</p>",
                     "ref": "e3bf2690-b883-11e5-964e-95c35734239a",
                     "settings": {},
                     "type": "text"
@@ -900,7 +921,7 @@
                     "content": null,
                     "ref": "75ea86f8-8ff2-11e5-b1f4-57a5ba6f4550",
                     "settings": {
-                        "linesAfter": 2,
+                        "linesAfter": 3,
                         "linesBefore": 0,
                         "token": "R5zeP"
                     },
@@ -1122,16 +1143,10 @@
                 {
                     "content": "<p>... and copies the certificates from /certs to the postgres data directory.</p>",
                     "ref": "df2124f4-9f8b-11e5-b9dc-3759b64e4f46",
-                    "settings": {},
-                    "type": "text"
-                },
-                {
-                    "content": "Link to...",
-                    "ref": "df2124f5-9f8b-11e5-b9dc-3759b64e4f46",
                     "settings": {
                         "noteRef": "5c43f580-9888-11e5-ad23-6988e9d175be"
                     },
-                    "type": "reference"
+                    "type": "text"
                 },
                 {
                     "content": null,
@@ -1214,19 +1229,6 @@
         {
             "items": [
                 {
-                    "content": "<p><a href=\"https://github.com/meteorhacks/npm#use-npm-modules-with-your-meteor-app\"><span data-auto-link=\"true\" data-href=\"https://github.com/meteorhacks/npm#use-npm-modules-with-your-meteor-app\">https://github.com/meteorhacks/npm#use-npm-modules-with-your-meteor-app</span></a></p>",
-                    "ref": "4dd4d880-b78b-11e5-bfce-1fa3dcb1cafe",
-                    "settings": {},
-                    "type": "text"
-                }
-            ],
-            "ref": "480f2f40-b78b-11e5-bfce-1fa3dcb1cafe",
-            "settings": {},
-            "title": "Using npm modules"
-        },
-        {
-            "items": [
-                {
                     "content": "<p><span style=\"line-height: 1.42857;\">This note describes what happens when the Meteor web application starts, both server-side and client-side.</span><br></p>",
                     "ref": "09631300-85b9-11e5-aebe-df0f8426c901",
                     "settings": {},
@@ -1278,6 +1280,85 @@
                 "firstParagraphIsDescription": true
             },
             "title": "Front-end startup"
+        },
+        {
+            "items": [
+                {
+                    "content": "<p>We use <a href=\"https://github.com/jshimko/meteor-launchpad/blob/67de0e9c8f0ab23aba34958f4082a0204b3e2157/README.md\">meteor-launchpad</a> to build a docker image of the front end that can run out of the box.</p>",
+                    "ref": "1c6ead10-f6ce-11e6-96cb-07a1c65b119a",
+                    "settings": {},
+                    "type": "text"
+                },
+                {
+                    "content": [
+                        {
+                            "inserts": [
+                                {
+                                    "pos": 3,
+                                    "type": "PROJECT_DIR"
+                                }
+                            ],
+                            "text": "cd /pgpilot-webapp",
+                            "type": "command"
+                        },
+                        {
+                            "text": "sh build_image.sh",
+                            "type": "command"
+                        }
+                    ],
+                    "ref": "89625e80-f6ce-11e6-93b2-5585f6f4982a",
+                    "settings": {},
+                    "type": "shell"
+                },
+                {
+                    "content": null,
+                    "ref": "453b2a20-f6ce-11e6-96cb-07a1c65b119a",
+                    "settings": {
+                        "linesAfter": 1,
+                        "linesBefore": 0,
+                        "showIndicator": false,
+                        "syntaxAuto": true,
+                        "token": "e2CP5"
+                    },
+                    "type": "code"
+                },
+                {
+                    "content": null,
+                    "ref": "f3a791c0-f6ce-11e6-93b2-5585f6f4982a",
+                    "settings": {
+                        "linesAfter": 3,
+                        "linesBefore": 0,
+                        "showIndicator": false,
+                        "syntaxAuto": true,
+                        "token": "RWbqV"
+                    },
+                    "type": "code"
+                },
+                {
+                    "content": "<p><a href=\"https://github.com/jshimko/meteor-launchpad/blob/f2e879208da6625bc11f2eebeaccaa87232b5672/scripts/install-mongo.sh#L5\">Meteor-launchpad checks the existence</a>&nbsp;of a&nbsp;<code class=\"code\">launchpad.conf</code> file :<br></p>",
+                    "ref": "fe4724b0-f6ce-11e6-93b2-5585f6f4982a",
+                    "settings": {},
+                    "type": "text"
+                },
+                {
+                    "content": null,
+                    "ref": "b12f1ed0-f6ce-11e6-93b2-5585f6f4982a",
+                    "settings": {
+                        "linesAfter": 2,
+                        "linesBefore": 0,
+                        "mode": "Properties files",
+                        "showIndicator": false,
+                        "syntaxAuto": true,
+                        "token": "jf32V"
+                    },
+                    "type": "code"
+                }
+            ],
+            "ref": "1487d180-f6ce-11e6-96cb-07a1c65b119a",
+            "settings": {
+                "firstParagraphIsDescription": true
+            },
+            "title": "Docker image"
         },
         {
             "items": [
@@ -1508,7 +1589,7 @@
                     "type": "heading"
                 },
                 {
-                    "content": "<p>In real world, the nodes will be launched on distinct remote hosts.</p><p>On each host, you would simply :</p>",
+                    "content": "<p>In real the world, the nodes will be launched on distinct remote hosts.</p><p>On each host, you would simply :</p>",
                     "ref": "ae892e20-b956-11e5-a535-c96ec66f6c1e",
                     "settings": {},
                     "type": "text"
@@ -1747,7 +1828,7 @@
                     "content": null,
                     "ref": "8653a280-8f28-11e5-8637-a1d7081e888e",
                     "settings": {
-                        "linesAfter": 7,
+                        "linesAfter": 6,
                         "linesBefore": 0,
                         "token": "uQh4Q"
                     },
@@ -1811,17 +1892,10 @@
                     "settings": {
                         "linesAfter": 0,
                         "linesBefore": 1,
+                        "noteRef": "4b631810-8f71-11e5-9c8b-e567fce499bc",
                         "token": "tDgsV"
                     },
                     "type": "code"
-                },
-                {
-                    "content": "Link to...",
-                    "ref": "57bf9d40-8f71-11e5-9c8b-e567fce499bc",
-                    "settings": {
-                        "noteRef": "4b631810-8f71-11e5-9c8b-e567fce499bc"
-                    },
-                    "type": "reference"
                 },
                 {
                     "content": "Server-initiated challenge",
@@ -1894,7 +1968,7 @@
         {
             "items": [
                 {
-                    "content": "<p><span style=\"line-height: 1.42857;\">Using </span><a href=\"https://docs.docker.com/compose/\" style=\"line-height: 1.42857; background-color: rgb(255, 255, 255);\">Docker Compose</a><span style=\"line-height: 1.42857;\">, we're going to launch </span><u style=\"line-height: 1.42857;\">three</u><span style=\"line-height: 1.42857;\"> containers : two nodes, plus the front end :</span><br></p><p></p><ul><li><span style=\"line-height: 1.42857;\"><b>node A</b>, which we will set up a primary postgreSQL cluster,</span><br></li><li><span style=\"line-height: 1.42857;\"><b>node B</b>, which we will set up as a slave of node A,</span><br></li><li><span style=\"line-height: 1.42857;\"><b>the front end</b> container running the web app which we will connect to with the browser.</span></li></ul><span style=\"line-height: 1.42857;\">For testing purposes, <u>we will run everything locally</u>.&nbsp;</span><span style=\"line-height: 1.42857;\">In real world, nodes would be running on distinct remote hosts.</span><div><p></p></div>",
+                    "content": "<p><span style=\"line-height: 1.42857;\">Using </span><a href=\"https://docs.docker.com/compose/\" style=\"line-height: 1.42857; background-color: rgb(255, 255, 255);\">Docker Compose</a><span style=\"line-height: 1.42857;\">, we're going to launch </span><u style=\"line-height: 1.42857;\">three</u><span style=\"line-height: 1.42857;\"> containers : two nodes, plus the front end :</span><br></p><p></p><ul><li><span style=\"line-height: 1.42857;\"><b>node A</b>, which we will set up a <b>primary</b> postgreSQL cluster,</span><br></li><li><span style=\"line-height: 1.42857;\"><b>node B</b>, which we will set up as a <b>slave</b> of node A,</span><br></li><li><span style=\"line-height: 1.42857;\"><b>the front end</b> container running the meteor web app which we will connect to with the browser.</span></li></ul><span style=\"line-height: 1.42857;\">For testing purposes, <u>we will run everything locally</u>.&nbsp;</span><span style=\"line-height: 1.42857;\">In the real world, nodes would be running on distinct remote hosts.</span><div><p></p></div>",
                     "ref": "e4b4a2c0-b886-11e5-964e-95c35734239a",
                     "settings": {},
                     "type": "text"
@@ -1906,7 +1980,7 @@
                     "type": "text"
                 },
                 {
-                    "content": "<p>Since we're testing everything locally, we need to expose each node's ports to distinct ports on the host. We chose to expose <code class=\"code\">5432</code> to <code class=\"code\">6000</code> and <code class=\"code\">6001</code>, and <code class=\"code\">8888</code> to <code class=\"code\">8888</code> and <code class=\"code\">8889</code>.</p>",
+                    "content": "<p>Since we're testing everything locally, we need to map each node's ports to distinct ports on the host. We chose to map&nbsp;<code class=\"code\">5432</code> to <code class=\"code\">6000</code> and <code class=\"code\">6001</code>, and <code class=\"code\">8888</code> to <code class=\"code\">8888</code> and <code class=\"code\">8889</code>.</p>",
                     "ref": "b2fed8d0-b887-11e5-964e-95c35734239a",
                     "settings": {
                         "kind": "hint"
@@ -1917,8 +1991,8 @@
                     "content": null,
                     "ref": "595c7c70-b886-11e5-964e-95c35734239a",
                     "settings": {
-                        "linesAfter": 25,
-                        "linesBefore": 0,
+                        "linesAfter": 33,
+                        "linesBefore": 1,
                         "showIndicator": false,
                         "syntaxAuto": true,
                         "token": "fyzyS"
@@ -2040,7 +2114,7 @@
                     "type": "step"
                 },
                 {
-                    "content": "<p>Open your browser and connect to your docker machine.</p><p>Ours is visiible at <span data-auto-link=\"true\" data-href=\"http://192.168.99.100:8080\"><a href=\"http://192.168.99.100:8080\">http://192.168.99.100:8080</a></span></p>",
+                    "content": "<p>Open your browser and connect to your docker machine.</p><p>Ours is visible at <span data-auto-link=\"true\" data-href=\"http://192.168.99.100:8080\"><a href=\"http://192.168.99.100:8080\">http://192.168.99.100:8080</a></span></p>",
                     "ref": "6468c190-b94f-11e5-a535-c96ec66f6c1e",
                     "settings": {},
                     "type": "text"
@@ -2126,18 +2200,18 @@
         {
             "items": [
                 {
-                    "content": "<p>We're going to create a <a href=\"http://www.postgresql.org/docs/current/static/warm-standby.html#STREAMING-REPLICATION-SLOTS\">replication slot</a>&nbsp;on the Master and init the other node as a slave of the master.<br><br>We assume two fresh nodes have been launched :</p>",
+                    "content": "<p>We're going to create a <a href=\"http://www.postgresql.org/docs/current/static/warm-standby.html#STREAMING-REPLICATION-SLOTS\">replication slot</a>&nbsp;on the Master and init the other node as a slave of the master.<br></p>",
                     "ref": "b54509a0-9859-11e5-8e74-8bacb0489527",
                     "settings": {},
                     "type": "text"
                 },
                 {
-                    "content": "Link to...",
-                    "ref": "8f0fc850-9850-11e5-8e74-8bacb0489527",
+                    "content": "<p>We assume two fresh nodes have been launched :</p>",
+                    "ref": "7d2df410-ebf4-11e6-a9c2-0d50068f5333",
                     "settings": {
                         "noteRef": "1577e910-984a-11e5-a837-077a82bd7a4f"
                     },
-                    "type": "reference"
+                    "type": "text"
                 },
                 {
                     "content": null,
@@ -2538,7 +2612,7 @@
                     "ref": "faa48060-8f18-11e5-bcb7-6d390970f7b7",
                     "settings": {
                         "linesAfter": 4,
-                        "linesBefore": 4,
+                        "linesBefore": 3,
                         "token": "FWNuw"
                     },
                     "type": "code"
@@ -2555,7 +2629,7 @@
                     "content": null,
                     "ref": "2d5b2310-8f19-11e5-bcb7-6d390970f7b7",
                     "settings": {
-                        "linesAfter": 3,
+                        "linesAfter": 2,
                         "linesBefore": 0,
                         "token": "q78pK"
                     },
@@ -2784,26 +2858,8 @@
         {
             "items": [
                 {
-                    "content": "For usage",
-                    "ref": "58676c30-b232-11e5-bb6d-852f7df2a799",
-                    "settings": {},
-                    "type": "heading"
-                },
-                {
-                    "content": "<p>In order to run the web app, you just need to have <a href=\"https://www.docker.com\">Docker</a> running on your computer.</p><p>In order to launch a postgresql node, you just need to have <a href=\"https://www.docker.com\">Docker</a> running on the host.</p>",
+                    "content": "<p>In order to run the web app you need to have&nbsp;<a href=\"https://www.meteor.com/install\">Meteor</a>&nbsp;installed on your computer.<br></p><p>In order to launch a postgresql node, you just need to have <a href=\"https://www.docker.com\">Docker</a> running on the host.</p>",
                     "ref": "c329a990-b230-11e5-bb6d-852f7df2a799",
-                    "settings": {},
-                    "type": "text"
-                },
-                {
-                    "content": "For Development",
-                    "ref": "5bb44d40-b232-11e5-bb6d-852f7df2a799",
-                    "settings": {},
-                    "type": "heading"
-                },
-                {
-                    "content": "<p>In order to develop PGPilot, you need to install <a href=\"http://www.meteor.com\">Meteor</a>.</p>",
-                    "ref": "35650530-b232-11e5-bb6d-852f7df2a799",
                     "settings": {},
                     "type": "text"
                 }
@@ -2878,7 +2934,7 @@
                     "type": "code"
                 },
                 {
-                    "content": "<p>In theory, we don't necessarily have to send a command from the front end to get a result.</p><p>In the future, the server could for example be able to run periodic commands (ex: maintenance) and \"stream\" the results to whatever GUI it is connected to.</p><p>Remember : websockets works both ways !</p>",
+                    "content": "<p>In theory, we don't necessarily have to send a command from the front end to get a result.</p><p>In the future, the server could for example be able to run periodic commands (ex: maintenance) and \"stream\" the results to whatever GUI it is connected to.</p><p>Remember : websockets work both ways !</p>",
                     "ref": "7a1101f0-8fac-11e5-bbc0-111c2f20285a",
                     "settings": {
                         "kind": "hint"
@@ -2910,7 +2966,7 @@
                     "type": "code"
                 },
                 {
-                    "content": "<p>Each command can run multiple shell commands or SQL queries to achieve the result.</p><p>One of the most complex is <code class=\"code\">cmd_status()</code>, which runs mutliple commands and queries.</p>",
+                    "content": "<p>Each command can run multiple shell commands or SQL queries to achieve the result.</p><p>One of the most complex ones is <code class=\"code\">cmd_status()</code>, which runs multiple commands and queries.</p>",
                     "ref": "0de1e6c0-8fb1-11e5-bbc0-111c2f20285a",
                     "settings": {},
                     "type": "text"
@@ -3004,16 +3060,10 @@
                 {
                     "content": "<p>Additionally, on top of that, we can pass&nbsp;<i>analyzed</i>&nbsp;data, which is for example extracted from the raw output using various parsing methods.</p>",
                     "ref": "ea301070-8fb1-11e5-bbc0-111c2f20285a",
-                    "settings": {},
-                    "type": "text"
-                },
-                {
-                    "content": "Link to...",
-                    "ref": "0b8d4100-8fb4-11e5-bbc0-111c2f20285a",
                     "settings": {
                         "noteRef": "7630f9e0-8fb2-11e5-bbc0-111c2f20285a"
                     },
-                    "type": "reference"
+                    "type": "text"
                 }
             ],
             "ref": "467a8860-8f71-11e5-9c8b-e567fce499bc",
@@ -3029,7 +3079,7 @@
                     "type": "heading"
                 },
                 {
-                    "content": "<p>This is how you dump your remote database to a local file.</p>",
+                    "content": "<p>This is how you can dump your remote database to a local file.</p>",
                     "ref": "eb4f0a70-c084-11e5-9a01-c56f8dcd0835",
                     "settings": {},
                     "type": "text"
@@ -3052,7 +3102,7 @@
                     "type": "heading"
                 },
                 {
-                    "content": "<p>This is how you restore such a file to a database running in a local container.</p>",
+                    "content": "<p>This is how you can restore such a file to a database running in a local container.</p>",
                     "ref": "fca44bf0-c084-11e5-9a01-c56f8dcd0835",
                     "settings": {},
                     "type": "text"
@@ -3080,34 +3130,10 @@
             "ref": "c3713cf0-bd80-11e5-9191-c3501916d748",
             "settings": {},
             "title": "Tips"
-        },
-        {
-            "items": [
-                {
-                    "content": "<p>Update info :&nbsp;<span data-auto-link=\"true\" data-href=\"https://quip.com/RXFlAk9Rc2xI\"><a href=\"https://quip.com/RXFlAk9Rc2xI\">https://quip.com/RXFlAk9Rc2xI</a></span></p><p>React instructions :&nbsp;<a href=\"https://www.meteor.com/tutorials/react/components\"><span data-auto-link=\"true\" data-href=\"https://www.meteor.com/tutorials/react/components\">https://www.meteor.com/tutorials/react/components</span></a></p>",
-                    "ref": "f05c6250-b793-11e5-bfce-1fa3dcb1cafe",
-                    "settings": {},
-                    "type": "text"
-                },
-                {
-                    "content": null,
-                    "ref": "6ad1bc30-b78d-11e5-bfce-1fa3dcb1cafe",
-                    "settings": {
-                        "linesAfter": 8,
-                        "linesBefore": 0,
-                        "showIndicator": false,
-                        "syntaxAuto": true,
-                        "token": "Cxcs8"
-                    },
-                    "type": "code"
-                }
-            ],
-            "ref": "1598ad60-b78c-11e5-bfce-1fa3dcb1cafe",
-            "settings": {},
-            "title": "1.2 update"
         }
     ],
     "path": "/Users/dom/Dropbox/dev/pgpilot/pgpilot.codestory",
+    "pinnedFiles": [],
     "roots": [
         {
             "accessible": true,
@@ -3125,6 +3151,7 @@
                 ".idea",
                 ".meteor/local",
                 "configuration.json",
+                "node_modules",
                 "packages"
             ],
             "fullPath": "/Users/dom/Dropbox/dev/pgpilot/pgpilot-webapp",
@@ -3181,11 +3208,17 @@
                         "type": "note"
                     },
                     {
+                        "children": [
+                            {
+                                "ref": "1487d180-f6ce-11e6-96cb-07a1c65b119a",
+                                "type": "note"
+                            }
+                        ],
                         "ref": "7cb7ea40-7b0c-11e5-b2ba-670f641a2552",
                         "type": "note"
                     }
                 ],
-                "title": "Developing PGPilot",
+                "title": "Development",
                 "type": "section"
             },
             {
@@ -3274,24 +3307,10 @@
                 ],
                 "title": "Mechanisms",
                 "type": "section"
-            },
-            {
-                "children": [
-                    {
-                        "ref": "480f2f40-b78b-11e5-bfce-1fa3dcb1cafe",
-                        "type": "note"
-                    },
-                    {
-                        "ref": "1598ad60-b78c-11e5-bfce-1fa3dcb1cafe",
-                        "type": "note"
-                    }
-                ],
-                "title": "Meteor misc",
-                "type": "section"
             }
         ],
         "selectedNotes": [
-            "cb843a10-8634-11e5-aebe-df0f8426c901"
+            "4c5e30a0-8f13-11e5-bcb7-6d390970f7b7"
         ]
     }
 }

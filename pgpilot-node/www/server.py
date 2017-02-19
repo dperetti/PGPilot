@@ -15,19 +15,8 @@ class MainHandler(websocket.WebSocketHandler): #t5bmc#
     authorized = False
     password = os.environ['pass']
 
-    def open(self): #j85PP#
-        print "WebSocket opened"
-
-        # Create a random challenge.
-        challenge = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(256))
-        # Mix it and hash it with the password
-        self.challenge_expected_answer = self._hashed_challenge(challenge)
-        # Send the clear challenge to the client
-        self.write_message("challenge|" + challenge)
-
     def on_message(self, message): #uQh4Q#
-
-        # A challenge was received from the client.
+        # Did we just receive a challenge from the client?
         # Send the back answer to prove we have the same password.
         if message[:10] == 'challenge|':
             challenge = message[10:]
@@ -53,6 +42,16 @@ class MainHandler(websocket.WebSocketHandler): #t5bmc#
             # Run the command
             c = RunCommand(handler=self, tag=tag, command=command)
             c.run()
+
+    def open(self): #j85PP#
+        print "WebSocket opened"
+
+        # Create a random challenge.
+        challenge = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(256))
+        # Mix it and hash it with the password
+        self.challenge_expected_answer = self._hashed_challenge(challenge)
+        # Send the clear challenge to the client
+        self.write_message("challenge|" + challenge)
 
     def data_received(self, chunk):
         pass  # not used

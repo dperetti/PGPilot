@@ -11,7 +11,6 @@ class RunCommand(Command):
     _status = None
 
     def run(self): #7Lytt#
-
         # Simple commands without parameters
         simple_commands = dict(
             list=self.cmd_list,

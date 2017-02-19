@@ -1,14 +1,42 @@
+import React, { PropTypes } from 'react'
+import { render } from 'react-dom';
+
+
+class ModalWrapper extends React.Component {
+
+  static propTypes = {
+  };
+
+  static defaultProps = {
+  };
+
+
+  constructor() {
+    super()
+    this.state = {
+    }
+  }
+
+  componentDidMount() {
+  }
+
+  render() {
+    return (<div {...this.props}>
+      ModalWrapper
+    </div>)
+  }
+}
+
 /**
  * Launch a modal
  * @param modal React modal class
  * @param {Object} otherProps
  * @returns {*}
  */
-launchModal = function(modal, otherProps) { // #aWzaF#
+const launchModal = (modal, otherProps) => {  // #aWzaF#
+  const mountNode = document.getElementById('modal-placeholder');
 
-    var mountNode = document.getElementById("modal-placeholder");
-
-    var ModalWrapper = React.createClass({
+    const ModalWrapper = React.createClass({
 
         getInitialState() {
             var props = _.extend({}, otherProps, {
@@ -41,5 +69,7 @@ launchModal = function(modal, otherProps) { // #aWzaF#
         }
     });
 
-    ReactDOM.render(<ModalWrapper modal={modal}  />, mountNode);
+    render(<ModalWrapper modal={modal}  />, mountNode);
 };
+
+export default launchModal

@@ -1,7 +1,12 @@
+import launchModal from './../imports/launchModal.jsx'
+import NodeEditModal from './../imports/modals/NodeEditModal.jsx'
+import CreateMasterModal from './../imports/modals/CreateMasterModal.jsx'
+import BackupsModal from './../imports/modals/BackupsModal.jsx'
+
 /**
  * @module PGPilot
  */
-PGPilot = function() {
+export default PGPilot = function() {
 
     var init = function() {
 
@@ -41,9 +46,7 @@ PGPilot = function() {
      * @param {string} node_id
      */
     var createMaster = function(node_id) {
-
         var node = Nodes.findOne(node_id);
-
         launchModal(CreateMasterModal, {handleSave: function(state) { // #dUh5t#
             var node_id = node._id;
             var postgres_password = state.postgresUser == "accessible" ? state.password : null;

@@ -1,21 +1,40 @@
-'master': #67JgD#
+version: '2'
+
+volumes:
+  meteor:
+
+services:
+  master: #67JgD#
     container_name: pgnode_master
     build: .
     ports:
-        - "6000:5432"
-        - "8888:8888"
+      - "6000:5432"
+      - "8888:8888"
     environment:
-        - pass=mypassword
+      - pass=mypassword
     volumes:
-        - ./www:/www
+      - ./www:/www
 
-'slave1':
+  slave1:
     container_name: pgnode_slave1
     build: .
     ports:
-        - "6001:5432"
-        - "8889:8888"
+      - "6001:5432"
+      - "8889:8888"
     environment:
-        - pass=mypassword
+      - pass=mypassword
     volumes:
-        - ./www:/www
+      - ./www:/www
+
+  # app:
+  #   container_name: pgpilot_app
+  #   build:
+  #     context: ../pgpilot-webapp/
+  #     dockerfile: DockerfileDev
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ../pgpilot-webapp/:/app
+  #     - meteor:/app/.meteor/local
+  #   depends_on:
+  #     - master

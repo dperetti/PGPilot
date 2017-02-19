@@ -1,4 +1,4 @@
-projectName: Testing...  #BKt3q#
+projectName: "Testing...!"
 nodes:
   - name: Server A
     host: 192.168.99.100
